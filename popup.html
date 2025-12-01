@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cookie Transparency Dashboard</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>Cookie Transparency Dashboard</h1>
+      <p id="site-info">Loading current site...</p>
+    </header>
+
+    <section id="summary-section" class="card">
+      <h2>Summary</h2>
+      <div id="summary-content">
+        <div class="summary-line">
+          <span>Total cookies:</span>
+          <span id="total-cookies">–</span>
+        </div>
+        <div class="summary-line">
+          <span>First-party cookies:</span>
+          <span id="first-party-count">–</span>
+        </div>
+        <div class="summary-line">
+          <span>Third-party cookies:</span>
+          <span id="third-party-count">–</span>
+        </div>
+        <div class="summary-line">
+          <span>Transparency Score:</span>
+          <span id="transparency-score">–</span>
+        </div>
+        <div id="transparency-badge" class="badge badge-neutral">
+          Score explanation appears here.
+        </div>
+      </div>
+    </section>
+
+    <section id="categories-section" class="card">
+      <h2>Cookie Categories</h2>
+      <p class="hint">
+        Cookies are grouped into categories based on their likely purpose.
+        Colors reflect risk: <span class="pill pill-necessary">Necessary</span>,
+        <span class="pill pill-functional">Functional</span>,
+        <span class="pill pill-analytics">Analytics</span>,
+        <span class="pill pill-advertising">Advertising</span>,
+        <span class="pill pill-unknown">Uncategorized</span>.
+      </p>
+      <div id="category-bars">
+        <!-- Dynamically filled -->
+      </div>
+    </section>
+
+    <section id="details-section" class="card">
+      <h2>Cookie Details</h2>
+      <p class="hint">
+        Click a row to see a plain-language explanation of what the cookie might be doing.
+      </p>
+      <div class="table-container">
+        <table id="cookie-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Domain</th>
+              <th>Type</th>
+              <th>Category</th>
+              <th>Lifetime</th>
+              <th>Security</th>
+            </tr>
+          </thead>
+          <tbody id="cookie-table-body">
+            <!-- Filled by popup.js -->
+          </tbody>
+        </table>
+      </div>
+      <div id="cookie-explanation" class="explanation-box">
+        <strong>Cookie explanation will appear here when you select a row.</strong>
+      </div>
+    </section>
+
+    <section id="education-section" class="card">
+      <h2>Learn About Cookies</h2>
+      <ul>
+        <li><strong>Necessary:</strong> required for logins, security, or basic site features.</li>
+        <li><strong>Functional:</strong> remember preferences like language or theme.</li>
+        <li><strong>Analytics:</strong> measure traffic and behavior (e.g., Google Analytics).</li>
+        <li><strong>Advertising / Tracking:</strong> build profiles, show targeted ads, enable cross-site tracking.</li>
+        <li><strong>Security flags:</strong> <code>Secure</code> and <code>HttpOnly</code> help protect cookies against theft.</li>
+      </ul>
+      <p class="hint small">
+        This dashboard is an educational tool. It infers purposes based on names and domains and may not be perfectly accurate.
+      </p>
+    </section>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

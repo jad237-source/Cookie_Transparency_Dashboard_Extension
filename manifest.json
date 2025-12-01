@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Cookie Transparency Dashboard",
+  "version": "1.0.0",
+  "description": "A Cookie Transparency Dashboard that helps users understand first-party vs third-party cookies, categories, security attributes, and a transparency score for the current site.",
+  "permissions": [
+    "cookies",
+    "tabs",
+    "activeTab",
+    "storage"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "action": {
+    "default_title": "Cookie Transparency Dashboard",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
