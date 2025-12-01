@@ -1,253 +1,220 @@
-🍪 Cookie Transparency Dashboard
-Chrome Extension — Milestone Artifact
+# 🍪 Cookie Transparency Dashboard  
+### Chrome Extension — Milestone Artifact (IS 393 — SPUR)
 
-Author: Josh DeMarco
-Course: IS 393 — SPUR
-Artifact Type: Functional Browser Extension
-Last Updated: December 2025
+**Author:** Josh DeMarco  
+**Type:** Functional Browser Extension  
+**Last Updated:** December 2025  
 
-📌 Overview
+---
 
-The Cookie Transparency Dashboard is a Chrome extension designed to make website cookie practices understandable and transparent for everyday users. While most websites set numerous cookies—many of which relate to analytics, tracking, or personalization—users typically lack the information needed to understand what they do or assess their privacy impact.
+## 📌 Overview  
+The **Cookie Transparency Dashboard** is a Chrome extension that helps users understand how websites use cookies. Most websites store analytics, tracking, advertising, and personalization cookies — but users rarely understand what they do or why they exist.
 
-This extension provides:
+This extension makes cookies **transparent**, providing:
 
-✔ A scan of all cookies used by the current site
+- ✔ Automatic scanning of cookies used by the active tab  
+- ✔ Detection of cookie purpose (Necessary, Functional, Analytics, Advertising)  
+- ✔ First-party vs. third-party classification  
+- ✔ A dynamic “Transparency Score” (0–100) summarizing privacy practices  
+- ✔ Detailed plain-language explanations for each cookie  
+- ✔ Smart heuristic categorization + vendor/pattern detection  
+- ✔ Lookup links to Cookiepedia, CookieServe, and Google  
+- ✔ A clean, accessible dashboard interface  
 
-✔ Automatic detection of cookie purpose (Necessary, Functional, Analytics, Advertising)
+This artifact is **self-contained** and requires **no external APIs**.
 
-✔ Identification of first-party vs. third-party cookies
+---
 
-✔ A transparency score (0–100) summarizing the site's privacy practices
+## 🧠 Motivation  
+Modern cookie banners often provide confusing or incomplete information. Users struggle to understand:
 
-✔ Detailed plain-language explanations for each cookie
+- What cookies are being set  
+- Who controls those cookies  
+- How long cookies last  
+- Whether cookies track behavior  
+- Whether cookies belong to third-party advertisers or trackers  
 
-✔ Smart categorization using heuristics and pattern mapping
+Research repeatedly shows that users have difficulty giving “informed consent” online.  
+This dashboard aims to improve comprehension by providing:
 
-✔ Lookup links to Cookiepedia and other external resources
+- **Clear categories**  
+- **Intuitive visualizations**  
+- **Plain-language explanations**  
+- **Links to external references**  
 
-✔ A clean, accessible dashboard interface
+The tool supports the SPUR project goal of improving users’ understanding of privacy and tracking practices across the web.
 
-This artifact is self-contained and requires no external services or API keys.
+---
 
-🧠 Motivation
+## ⚙️ Features  
 
-Most users encounter cookie banners that provide little meaningful information beyond “Accept” or “Manage Preferences.” The terminology is confusing, the technology is hidden, and users rarely understand:
+### 🔍 Automatic Cookie Scan  
+The extension automatically scans all cookies used by the current webpage as soon as the popup is opened.
 
-What cookies are being set
+---
 
-Who is setting them
+### 🧾 Smart Categorization  
+Cookies are classified using a hybrid pattern-based and heuristic system:
 
-How long they last
+**Categories:**
+- **Necessary** — session management, authentication, security  
+- **Functional** — preferences, UI settings  
+- **Analytics** — Google Analytics, Hotjar, Segment, Mixpanel, etc.  
+- **Advertising** — Facebook Pixel, TikTok Ads, DoubleClick, Criteo  
+- **Uncategorized** — custom or unusual cookies  
 
-Whether they track behavior
+**Detection Techniques Include:**
+- Known vendor prefixes (`_ga`, `_gid`, `_fbp`, `_gcl_`, `mp_`, `ajs_`, etc.)  
+- Domain-based inference  
+- Security flags  
+- Lifespan analysis  
+- Fallback matching  
 
-Whether they belong to the site or to third-party advertisers
+This dramatically reduces “Uncategorized” cookies.
 
-Research has repeatedly shown that users struggle with informed consent in web privacy. This dashboard aims to increase comprehension by providing:
+---
 
-Clear categories
+### 🔐 Security Attribute Summary  
+For each cookie, the dashboard shows:
 
-Visualizations
+- Whether `Secure` is set  
+- Whether `HttpOnly` is set  
+- The cookie’s `SameSite` setting  
 
-Plain-language explanations
+This helps users understand whether a cookie is protected against common attacks.
 
-External references
+---
 
-This supports the educational goals of the course by improving users’ understanding of online tracking practices.
+### 📈 Transparency Score (0–100)  
+The extension generates a score based on:
 
-⚙️ Features
-🔍 Automatic Cookie Scan
+- Number of advertising cookies  
+- Number of analytics cookies  
+- Number of third-party cookies  
+- Missing security attributes  
+- Long-lived cookie lifespans  
 
-Upon opening the popup, the extension automatically scans all cookies used by the active webpage.
+The final score is categorized as:
 
-🧾 Categorization
+- 🟢 **Good**  
+- 🟡 **Fair**  
+- 🔴 **Poor**  
 
-Cookies are classified using a combined heuristic system:
+Each rating includes a plain-language explanation.
 
-Necessary – login/session/security
+---
 
-Functional – preferences, settings
+### 📊 Category Visualization  
+A horizontal bar chart shows the cookie distribution across categories, color-coded for clarity.
 
-Analytics – GA, Hotjar, Mixpanel, etc.
+---
 
-Advertising – Facebook, TikTok, Criteo, DoubleClick
+### 📘 Cookiepedia Integration  
+For deeper research, each cookie includes one-click links to:
 
-Uncategorized – rare cookies that don’t fit patterns
+- 🔍 Cookiepedia search  
+- 📘 CookieServe lookup  
+- 🌐 Google “What is ___ cookie?” search  
 
-The extension uses:
+Helpful for uncommon or ambiguous cookies.
 
-smart pattern recognition
+---
 
-domain matching
+## 🗂️ Project Structure
 
-vendor detection
-
-fallbacks for unknown names
-
-🔐 Security Attribute Summary
-
-Shows whether each cookie uses:
-
-Secure
-
-HttpOnly
-
-SameSite
-
-📈 Transparency Score (0–100)
-
-Calculated using:
-
-number of tracking cookies
-
-third-party cookies
-
-long-lived cookies
-
-missing security flags
-
-Scores are labeled:
-
-Good
-
-Fair
-
-Poor
-
-📊 Category Visualization
-
-Colored bars show what percentage of cookies fall in each category.
-
-📘 Cookiepedia Integration
-
-For any cookie, users can view more information using:
-
-🔍 Cookiepedia search
-
-📘 CookieServe lookup
-
-🌐 Google “What is ___ cookie?”
-
-Especially useful for “Uncategorized” cookies.
-
-🗂️ Project Structure
 Cookie_Transparency_Dashboard/
-│
-├── manifest.json          # Chrome extension manifest (v3)
-├── popup.html             # Main popup UI
-├── popup.js               # Logic, categorization, scoring, Cookiepedia lookup
-├── popup.css              # Styling for popup
-├── background.js          # Minimal service worker for lifecycle logging
-└── icons/ (optional)      # Icon assets (if added)
 
-🚀 Installation / Running the Extension
+├── manifest.json # Chrome extension manifest (Manifest V3)
 
-Download or unzip the full project folder.
+├── popup.html # Main popup UI
 
-Open Chrome and go to:
+├── popup.js # Logic, cookie processing, scoring, categorization
 
-chrome://extensions
+├── popup.css # Dashboard styling
 
+├── background.js # Lightweight service worker for lifecycle events
 
-Enable Developer Mode (top-right toggle).
+└── icons/ # (Optional) Extension icon assets
 
-Click Load Unpacked.
+---
 
-Select the project folder.
+## 🚀 Installation (Load Unpacked)
 
-Visit any website and click the extension icon to view the dashboard.
+1. **Download** or **clone** the entire project folder  
+2. Open Chrome and visit:  chrome://extensions
+3. Enable **Developer Mode** in the top right  
+4. Click **Load Unpacked**  
+5. Select the project directory  
+6. Visit any website → click the extension icon → view your dashboard  
 
-🧪 How to Use
+---
 
-Browse to any site (e.g., nytimes.com, amazon.com).
+## 🧪 How to Use
 
-Click the Cookie Transparency Dashboard extension icon.
+1. Navigate to any website (e.g., `nytimes.com`, `amazon.com`)  
+2. Click the Cookie Transparency Dashboard extension icon  
+3. Review:
+   - Total cookies on the page  
+   - First-party vs. third-party breakdown  
+   - Category distribution  
+   - Transparency Score  
+4. Click individual cookies to view:
+   - What category they belong to  
+   - How long they last  
+   - Their security attributes  
+   - First-party vs. third-party status  
+   - Cookiepedia lookup link  
 
-View:
+Use this tool to compare privacy practices between websites.
 
-total cookies
+---
 
-first-party vs third-party
+## 📊 Evaluation Plan (For Final Project)
 
-category bars
+Designed for a **pre/post comprehension study**.
 
-transparency score
+### **Pre-Survey**
+Participants answer:
+- “What are cookies used for?”  
+- “Can you identify a tracking cookie?”  
+- “Do you know how long cookies last?”  
 
-Click any cookie to see:
-
-plain-language explanation
-
-security attributes
-
-lifespan
-
-Cookiepedia lookup link
-
-Use the tool to compare cookies across websites.
-
-📊 Evaluation Plan (For Final Project)
-
-This tool is designed for a pre/post comprehension study.
-
-Participants will:
-
-Pre-Survey
-
-What are cookies used for?
-
-Can you identify a tracking cookie?
-
-Do you know how long cookies last?
-
-Interaction Phase
-
+### **Interaction Phase**
 Participants use the extension on 2–3 websites.
 
-Post-Survey
+### **Post-Survey**
+Participants answer:
+- “Did the dashboard improve your understanding of cookies?”  
+- “Do you better recognize third-party trackers?”  
+- “Would this change how you respond to cookie banners?”  
 
-Did the dashboard help you understand cookie behaviors?
+### **Metrics**
+- Increase in accuracy of definitions  
+- Recognition of analytics/advertising cookies  
+- Better transparency score interpretation  
+- Qualitative usability feedback  
 
-Are you more aware of third-party tracking?
+---
 
-Would this change how you respond to cookie popups?
+## 🧩 Technical Notes  
+- Built entirely with **Chrome’s cookies API** (Manifest V3 compliant)  
+- No backend needed; all code runs client-side  
+- No data is stored, logged, or transmitted  
+- The extension is **read-only** — it does not block or modify cookies  
+- Categorization uses heuristic logic optimized for accuracy and simplicity  
 
-Metrics include:
+---
 
-improved correctness on definition questions
+## 🔒 Privacy & Security  
 
-increased recognition of third-party trackers
+- 🚫 No personal data is collected  
+- 🚫 No analytics or tracking within the extension  
+- 🚫 No cookies are modified, deleted, or blocked  
+- ✔ All processing happens locally in the browser  
+- ✔ External searches only occur when users click a link  
 
-transparency score interpretation
+---
 
-user satisfaction ratings
+## 🧾 License  
+This project was created as part of the **SPUR program at NJIT** and is intended for academic and educational use only.
 
-🧩 Technical Notes
-
-Runs entirely using Chrome’s cookies API (Manifest V3).
-
-No external APIs required.
-
-Does not block cookies or modify website behavior.
-
-Designed purely for transparency and education.
-
-Pattern recognizer uses lightweight heuristic rules for high accuracy.
-
-Fully self-contained for grading and reproducibility.
-
-🔒 Privacy & Security Considerations
-
-The extension does not store or transmit any user data.
-
-All processing occurs locally in the browser.
-
-No cookies are blocked, overwritten, or modified.
-
-No personal information is collected.
-
-External searches open in a new tab only when clicked by the user.
-
-🧾 License
-
-This artifact is for academic purposes as part of coursework at NJIT and is not intended for production use.
